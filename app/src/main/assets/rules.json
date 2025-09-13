@@ -1,0 +1,249 @@
+{
+  "tracking_params": [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+    "fbclid",
+    "gclid",
+    "msclkid",
+    "zanpid",
+    "igshid",
+    "mc_cid",
+    "mc_eid",
+    "ttclid",
+    "trk",
+    "trkCampaign",
+    "trkContent",
+    "trkMedium",
+    "trkSource",
+    "trkTerm",
+    "affiliate",
+    "aff",
+    "ref",
+    "referrer",
+    "source",
+    "campaign",
+    "medium",
+    "term",
+    "content",
+    "clickid",
+    "partner",
+    "sub_id",
+    "sub_id1",
+    "sub_id2",
+    "sub_id3",
+    "sub_id4",
+    "sub_id5",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "irclickid",
+    "irgwc",
+    "sharedid",
+    "share_id",
+    "correlation_id",
+    "post_fullname",
+    "ref_source",
+    "is_copy_url",
+    "is_from_webapp",
+    "sender_device",
+    "sender_web_id",
+    "embed_source",
+    "refer",
+    "referer_url",
+    "referer_video_id",
+    "si",
+    "context",
+    "tag",
+    "linkCode",
+    "camp",
+    "creative",
+    "creativeASIN",
+    "ascsubtag",
+    "dib",
+    "dib_tag",
+    "geniuslink",
+    "keywords",
+    "th",
+    "content-id",
+    "linkId",
+    "ufe",
+    "crid",
+    "pd_rd_i",
+    "pd_rd_r",
+    "pd_rd_w",
+    "pd_rd_wg",
+    "pf_rd_i",
+    "pf_rd_m",
+    "pf_rd_p",
+    "pf_rd_r",
+    "pf_rd_s",
+    "pf_rd_t",
+    "qid",
+    "refinements",
+    "rnid",
+    "social_share",
+    "sprefix",
+    "sa",
+    "rct",
+    "opi",
+    "ved",
+    "usg",
+    "ei",
+    "gs_lcp",
+    "bih",
+    "biw",
+    "client",
+    "dpr",
+    "fbs",
+    "gs_lcrp",
+    "gs_lp",
+    "ictx",
+    "iflsig",
+    "oq",
+    "sclient",
+    "sca_esv",
+    "sei",
+    "sourceid",
+    "spell",
+    "sstk",
+    "uact",
+    "notification_referrer_id",
+    "media",
+    "mkcid",
+    "mkevt",
+    "ssspo",
+    "ssrc",
+    "ssuid",
+    "widget_ver",
+    "from_search",
+    "from_srp",
+    "rank",
+    "pf_rd_m",
+    "pf_rd_p",
+    "pf_rd_r",
+    "pf_rd_s",
+    "pf_rd_t",
+    "pf_rd_i",
+    "ref_",
+    "referringSource",
+    "sgrp",
+    "smid",
+    "ugrp",
+    "reflink",
+    "st",
+    "mod",
+    "utm-campaign",
+    "utm-content",
+    "utm-experiment",
+    "utm-medium",
+    "utm-share-source",
+    "utm-source",
+    "utm-term",
+    "can_id",
+    "email_referrer",
+    "email_subject",
+    "link_id",
+    "in_source",
+    "leadSource",
+    "srnd",
+    "algo_exp_id",
+    "pdp_npi",
+    "curPageLogUid",
+    "xmt"
+  ],
+  "domains": {
+    "youtube.com": {
+      "keep": ["v", "t", "list", "index"],
+      "remove": ["feature", "ab_channel", "app", "si", "start_radio", "embeds_referring_euri", "embeds_referring_origin", "embeds_referring_origin_token", "embeds_widget_referring_euri", "embeds_widget_referring_origin", "embeds_widget_referring_origin_token"]
+    },
+    "twitter.com": {
+      "keep": [],
+      "remove": ["s", "t", "ref_src", "ref_url"]
+    },
+    "instagram.com": {
+      "keep": [],
+      "remove": ["igsh", "utm_source", "utm_campaign", "utm_medium"]
+    },
+    "facebook.com": {
+      "keep": [],
+      "remove": ["set", "tn", "eid", "source", "ref", "fref", "ref_type", "type", "external_link", "notif_t", "notif_id", "action_object_map", "action_type_map", "action_ref_map"]
+    },
+    "linkedin.com": {
+      "keep": [],
+      "remove": ["trk", "trkInfo", "original_referer", "lipi", "licu", "trkEmail", "miniProfileUrn", "eBP", "recommendedFlavor", "refId"]
+    },
+    "reddit.com": {
+      "keep": [],
+      "remove": ["share_id", "ref", "ref_source", "correlation_id", "post_fullname", "ref_campaign"]
+    },
+    "tiktok.com": {
+      "keep": [],
+      "remove": ["is_copy_url", "is_from_webapp", "sender_device", "sender_web_id", "embed_source", "refer", "referer_url", "referer_video_id"]
+    },
+    "spotify.com": {
+      "keep": [],
+      "remove": ["si", "context"]
+    },
+    "amazon.com": {
+      "keep": ["dp", "asin", "gp"],
+      "remove": ["tag", "linkCode", "camp", "creative", "creativeASIN", "ascsubtag", "dib", "dib_tag", "geniuslink", "keywords", "th", "content-id", "linkId", "ufe", "crid", "pd_rd_i", "pd_rd_r", "pd_rd_w", "pd_rd_wg", "pf_rd_i", "pf_rd_m", "pf_rd_p", "pf_rd_r", "pf_rd_s", "pf_rd_t", "qid", "ref", "refinements", "rnid", "social_share", "sprefix"]
+    },
+    "google.com": {
+      "keep": ["q", "source", "tbm"],
+      "remove": ["sa", "rct", "opi", "ved", "usg", "ei", "gs_lcp", "bih", "biw", "client", "dpr", "fbs", "gs_lcrp", "gs_lp", "ictx", "iflsig", "oq", "sclient", "sca_esv", "sei", "sourceid", "spell", "sstk", "uact"]
+    },
+    "github.com": {
+      "keep": [],
+      "remove": ["notification_referrer_id"]
+    },
+    "ebay.com": {
+      "keep": [],
+      "remove": ["media", "mkcid", "mkevt", "ssspo", "ssrc", "ssuid", "widget_ver"]
+    },
+    "goodreads.com": {
+      "keep": [],
+      "remove": ["from_search", "from_srp", "qid", "rank", "ref"]
+    },
+    "imdb.com": {
+      "keep": [],
+      "remove": ["pf_rd_m", "pf_rd_p", "pf_rd_r", "pf_rd_s", "pf_rd_t", "pf_rd_i", "ref_"]
+    },
+    "nytimes.com": {
+      "keep": [],
+      "remove": ["referringSource", "sgrp", "smid", "ugrp"]
+    },
+    "wsj.com": {
+      "keep": [],
+      "remove": ["reflink", "st", "mod"]
+    },
+    "eventbrite.com": {
+      "keep": [],
+      "remove": ["utm-campaign", "utm-content", "utm-experiment", "utm-medium", "utm-share-source", "utm-source", "utm-term", "aff", "can_id", "email_referrer", "email_subject", "link_id", "ref", "source"]
+    },
+    "bloomberg.com": {
+      "keep": [],
+      "remove": ["trk", "in_source", "leadSource", "srnd"]
+    },
+    "aliexpress.com": {
+      "keep": [],
+      "remove": ["algo_exp_id", "pdp_npi", "curPageLogUid"]
+    },
+    "threads.net": {
+      "keep": [],
+      "remove": ["xmt"]
+    },
+    "goo.gl": {
+      "keep": [],
+      "remove": ["sa", "rct", "opi", "ved", "usg", "utm_source", "utm_medium", "utm_campaign"]
+    },
+    "open.spotify.com": {
+      "keep": [],
+      "remove": ["si", "context"]
+    }
+  }
+}

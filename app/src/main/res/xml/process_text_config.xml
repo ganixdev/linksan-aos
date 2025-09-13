@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<process-text-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <operation
+        android:label="Sanitize URL"
+        android:icon="@mipmap/ic_launcher" />
+</process-text-config>
