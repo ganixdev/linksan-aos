@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/rounded_surface_background">
+
+    <!-- Header with domain and removed count -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_link"
+                app:tint="?android:colorPrimary"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/tv_domain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="example.com"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_removed_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_red_background"
+            android:text="3 removed"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Clean URL -->
+    <TextView
+        android:id="@+id/tv_result_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://example.com/clean-url"
+        android:textSize="14sp"
+        android:fontFamily="monospace"
+        android:textColor="?android:textColorPrimary"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Action buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_item_copy"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_blue_button"
+            android:text="Copy"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btn_item_share"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_purple_button"
+            android:text="Share"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btn_item_open"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_green_button"
+            android:text="Open"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -153,6 +153,10 @@ class URLProcessor(private val context: Context) {
         }
     }
 
+    fun extractUrls(text: String): List<String> {
+        return urlSanitizer.extractUrls(text)
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }

@@ -1,31 +1,425 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:colorBackground"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LinkSan - URL Sanitizer"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Header Section -->
+    <LinearLayout
+        android:id="@+id/header_section"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="?android:colorBackground"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:elevation="2dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select text with URLs to sanitize them using the system share menu"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <!-- Top row: Logo + Title + Info button -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Centered content (logo + title) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Logo/Icon -->
+                <LinearLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded_primary_background"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_link"
+                        app:tint="?android:colorPrimary" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="LinkSan"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:textColorPrimary"
+                    android:fontFamily="monospace" />
+            </LinearLayout>
+
+            <!-- Info button -->
+            <ImageButton
+                android:id="@+id/btn_info"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_info_outline"
+                app:tint="?android:colorPrimary"
+                android:contentDescription="About" />
+        </RelativeLayout>
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove tracking parameters and clean your URLs"
+            android:textSize="14sp"
+            android:textColor="?android:textColorSecondary"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <!-- Main Content -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
+
+                <!-- URL Input Section -->
+                <LinearLayout
+                    android:id="@+id/input_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:colorBackground"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="1dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📝 URL Input"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:textColorPrimary"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/et_url_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_edittext_background"
+                        android:hint="Tap Sanitize to grab from clipboard"
+                        android:inputType="textUri"
+                        android:imeOptions="actionDone"
+                        android:padding="12dp"
+                        android:layout_marginBottom="8dp"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btn_sanitize"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/rounded_button_primary"
+                        android:text="Sanitize URLs"
+                        android:textColor="?android:textColorPrimaryInverse"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_auto_fix"
+                        android:drawablePadding="8dp"
+                        android:padding="12dp" />
+                </LinearLayout>
+
+                <!-- Removed Trackers Section (Initially Hidden) -->
+                <LinearLayout
+                    android:id="@+id/trackers_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:colorBackground"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="1dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="6dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🗑️ Removed Trackers"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="?android:textColorPrimary" />
+
+                        <TextView
+                            android:id="@+id/tv_tracker_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_red_background"
+                            android:text="0"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp" />
+                    </LinearLayout>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:id="@+id/trackers_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical" />
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+                <!-- Results Section (Initially Hidden) -->
+                <LinearLayout
+                    android:id="@+id/results_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:colorBackground"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="1dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✨ Sanitized Results"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:textColorPrimary"
+                        android:layout_marginBottom="6dp" />
+
+                    <!-- Single Result Container -->
+                    <LinearLayout
+                        android:id="@+id/single_result_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Clean URL Display -->
+                        <TextView
+                            android:id="@+id/tv_clean_url"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_surface_background"
+                            android:padding="12dp"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"
+                            android:textColor="?android:textColorPrimary"
+                            android:layout_marginBottom="6dp" />
+
+                        <!-- Action Buttons -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="6dp">
+
+                            <Button
+                                android:id="@+id/btn_copy"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_blue_button"
+                                android:text="Copy"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:drawableStart="@drawable/ic_copy"
+                                android:drawablePadding="8dp"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_share"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_purple_button"
+                                android:text="Share"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:drawableStart="@drawable/ic_share"
+                                android:drawablePadding="8dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_open"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_green_button"
+                                android:text="Open"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:drawableStart="@drawable/ic_open_browser"
+                                android:drawablePadding="8dp"
+                                android:layout_marginStart="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Multi Results Container -->
+                    <LinearLayout
+                        android:id="@+id/multi_result_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Summary Stats -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_surface_background"
+                            android:padding="12dp"
+                            android:layout_marginBottom="12dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_analytics"
+                                app:tint="?android:colorPrimary"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_summary_stats"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="0 URLs processed • 0 trackers removed"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="?android:textColorPrimary" />
+                        </LinearLayout>
+
+                        <!-- Bulk Action Buttons -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="16dp">
+
+                            <Button
+                                android:id="@+id/btn_copy_all"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_blue_button"
+                                android:text="Copy All"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:drawableStart="@drawable/ic_copy_all"
+                                android:drawablePadding="8dp"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_share_all"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_purple_button"
+                                android:text="Share All"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:drawableStart="@drawable/ic_share"
+                                android:drawablePadding="8dp"
+                                android:layout_marginStart="4dp" />
+                        </LinearLayout>
+
+                        <!-- Individual Results Container -->
+                        <LinearLayout
+                            android:id="@+id/individual_results_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Support Section (Initially Hidden) -->
+                <LinearLayout
+                    android:id="@+id/support_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:colorBackground"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="1dp"
+                    android:visibility="gone"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_gift"
+                        app:tint="?android:colorPrimary"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Send good vibes"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:colorPrimary" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_arrow_outward"
+                        app:tint="?android:colorPrimary"
+                        android:alpha="0.7" />
+                </LinearLayout>
+
+                <!-- Bottom spacing -->
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
