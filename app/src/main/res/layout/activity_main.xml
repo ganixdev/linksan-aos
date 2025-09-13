@@ -33,19 +33,19 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <!-- Logo/Icon -->
+                <!-- Logo/Icon (match About dialog styling) -->
                 <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/rounded_primary_background"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:src="@drawable/ic_link"
-                        app:tint="?android:colorPrimary" />
+                        app:tint="@color/colorOnPrimary" />
                 </LinearLayout>
 
                 <TextView
@@ -66,9 +66,9 @@
                 android:layout_height="44dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="?android:selectableItemBackgroundBorderless"
+                android:background="@drawable/rounded_info_background"
                 android:src="@drawable/ic_info_outline"
-                app:tint="?android:colorPrimary"
+                app:tint="@color/colorOnSurfaceVariant"
                 android:contentDescription="About" />
         </RelativeLayout>
 
@@ -76,7 +76,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remove tracking parameters and clean your URLs"
+            android:text="Clean URLs • Remove Trackers • Protect Privacy"
             android:textSize="14sp"
             android:textColor="?android:textColorSecondary"
             android:fontFamily="monospace"
@@ -118,7 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📝 URL Input"
+                        android:text="URL Input"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="?android:textColorPrimary"
@@ -172,7 +172,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="🗑️ Removed Trackers"
+                            android:text="Removed Trackers"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="?android:textColorPrimary" />
@@ -220,7 +220,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="✨ Sanitized Results"
+                        android:text="Sanitized Results"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="?android:textColorPrimary"
@@ -402,7 +402,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Send good vibes"
+                        android:text="Support LinkSan"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="?android:colorPrimary" />

@@ -422,13 +422,22 @@ class MainActivity : AppCompatActivity() {
         individualResultsContainer.removeAllViews()
     }
 
-    private fun showAboutDialog() {
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_about, null)
+    private var aboutSheet: AboutBottomSheet? = null
 
-        AlertDialog.Builder(this)
-            .setView(dialogView)
-            .setPositiveButton("Close", null)
-            .show()
+    private fun showAboutDialog() {
+        // Avoid stacking multiple sheets
+        if (aboutSheet?.dialog?.isShowing == true) return
+
+        aboutSheet = AboutBottomSheet()
+        aboutSheet?.show(supportFragmentManager, "about_sheet")
+    }
+
+    fun closeDialog(view: View) {
+        // Called by the X button inside dialog_about.xml
+        val sheet = aboutSheet
+        if (sheet?.dialog?.isShowing == true) {
+            sheet.dismiss()
+        }
     }
 
     fun openSupportUrl(view: View) {
