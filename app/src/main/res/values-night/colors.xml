@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Icon Colors (DO NOT CHANGE) -->
+    <color name="ic_launcher_background">#FFFFFF</color>
+
+    <!-- Modern Material Design 3 Color Scheme - Dark Mode -->
+    <color name="colorPrimary">#D0BCFF</color>          <!-- Lighter purple for dark backgrounds -->
+    <color name="colorPrimaryDark">#9A82DB</color>       <!-- Adjusted darker purple -->
+    <color name="colorOnPrimary">#FFFFFF</color>         <!-- White text on light primary -->
+    <color name="colorSecondary">#CCC2DC</color>         <!-- Lighter secondary -->
+    <color name="colorSecondaryDark">#332D41</color>     <!-- Dark secondary -->
+    <color name="colorOnSecondary">#332D41</color>       <!-- Dark text on secondary -->
+
+    <!-- Surface Colors - Dark Mode -->
+    <color name="colorSurface">#1C1B1F</color>          <!-- Dark surface -->
+    <color name="colorOnSurface">#E6E1E5</color>        <!-- Light text on surface -->
+    <color name="colorSurfaceVariant">#49454F</color>   <!-- Dark surface variant -->
+    <color name="colorOnSurfaceVariant">#CAC4D0</color> <!-- Light text on surface variant -->
+
+    <!-- Accent Colors -->
+    <color name="colorTertiary">#EFB8C8</color>         <!-- Lighter tertiary -->
+    <color name="colorOnTertiary">#492532</color>       <!-- Dark text on tertiary -->
+
+    <!-- Action Button Colors - Adjusted for dark mode -->
+    <color name="buttonBlue">#42A5F5</color>           <!-- Lighter blue -->
+    <color name="buttonGreen">#66BB6A</color>          <!-- Lighter green -->
+    <color name="buttonPurple">#BA68C8</color>         <!-- Lighter purple -->
+    <color name="buttonRed">#EF5350</color>            <!-- Lighter red -->
+
+    <!-- Chip colors for tracker display - Dark mode -->
+    <color name="chip_background_red">#5D1A1A</color>
+    <color name="chip_text_red">#FFCDD2</color>
+    <color name="chip_stroke_red">#D32F2F</color>
+
+    <!-- Button text color -->
+    <color name="colorButtonText">#FFFFFF</color>
+</resources>

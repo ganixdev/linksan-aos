@@ -31,4 +31,7 @@
     <color name="chip_background_red">#FFEBEE</color>
     <color name="chip_text_red">#C62828</color>
     <color name="chip_stroke_red">#FFCDD2</color>
+
+    <!-- Button text color -->
+    <color name="colorButtonText">#FFFFFF</color>
 </resources>
