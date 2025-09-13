@@ -1,181 +1,192 @@
 {
-  "tracking_params": [
-    "utm_source",
-    "utm_medium",
-    "utm_campaign",
-    "utm_term",
-    "utm_content",
-    "fbclid",
-    "gclid",
-    "msclkid",
-    "zanpid",
-    "igshid",
-    "mc_cid",
-    "mc_eid",
-    "ttclid",
-    "trk",
-    "trkCampaign",
-    "trkContent",
-    "trkMedium",
-    "trkSource",
-    "trkTerm",
-    "affiliate",
-    "aff",
-    "ref",
-    "referrer",
-    "source",
-    "campaign",
-    "medium",
-    "term",
-    "content",
-    "clickid",
-    "partner",
-    "sub_id",
-    "sub_id1",
-    "sub_id2",
-    "sub_id3",
-    "sub_id4",
-    "sub_id5",
-    "s1",
-    "s2",
-    "s3",
-    "s4",
-    "s5",
-    "irclickid",
-    "irgwc",
-    "sharedid",
-    "share_id",
-    "correlation_id",
-    "post_fullname",
-    "ref_source",
-    "is_copy_url",
-    "is_from_webapp",
-    "sender_device",
-    "sender_web_id",
-    "embed_source",
-    "refer",
-    "referer_url",
-    "referer_video_id",
-    "si",
-    "context",
-    "tag",
-    "linkCode",
-    "camp",
-    "creative",
-    "creativeASIN",
-    "ascsubtag",
-    "dib",
-    "dib_tag",
-    "geniuslink",
-    "keywords",
-    "th",
-    "content-id",
-    "linkId",
-    "ufe",
-    "crid",
-    "pd_rd_i",
-    "pd_rd_r",
-    "pd_rd_w",
-    "pd_rd_wg",
-    "pf_rd_i",
-    "pf_rd_m",
-    "pf_rd_p",
-    "pf_rd_r",
-    "pf_rd_s",
-    "pf_rd_t",
-    "qid",
-    "refinements",
-    "rnid",
-    "social_share",
-    "sprefix",
-    "sa",
-    "rct",
-    "opi",
-    "ved",
-    "usg",
-    "ei",
-    "gs_lcp",
-    "bih",
-    "biw",
-    "client",
-    "dpr",
-    "fbs",
-    "gs_lcrp",
-    "gs_lp",
-    "ictx",
-    "iflsig",
-    "oq",
-    "sclient",
-    "sca_esv",
-    "sei",
-    "sourceid",
-    "spell",
-    "sstk",
-    "uact",
-    "notification_referrer_id",
-    "media",
-    "mkcid",
-    "mkevt",
-    "ssspo",
-    "ssrc",
-    "ssuid",
-    "widget_ver",
-    "from_search",
-    "from_srp",
-    "rank",
-    "pf_rd_m",
-    "pf_rd_p",
-    "pf_rd_r",
-    "pf_rd_s",
-    "pf_rd_t",
-    "pf_rd_i",
-    "ref_",
-    "referringSource",
-    "sgrp",
-    "smid",
-    "ugrp",
-    "reflink",
-    "st",
-    "mod",
-    "utm-campaign",
-    "utm-content",
-    "utm-experiment",
-    "utm-medium",
-    "utm-share-source",
-    "utm-source",
-    "utm-term",
-    "can_id",
-    "email_referrer",
-    "email_subject",
-    "link_id",
-    "in_source",
-    "leadSource",
-    "srnd",
-    "algo_exp_id",
-    "pdp_npi",
-    "curPageLogUid",
-    "xmt"
+  "trackers": {
+    "general": [
+      "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id", "utm_name", "utm_ad", "utm_affiliate", "utm_brand", "utm_campaigncode", "utm_campaignid", "utm_channel", "utm_cid", "utm_creative", "utm_creative_format", "utm_device", "utm_emcid", "utm_emmid", "utm_internal", "utm_keyword", "utm_mailing", "utm_marketing_tactic", "utm_place", "utm_product", "utm_pubreferrer", "utm_reader", "utm_referrer", "utm_serial", "utm_session", "utm_siteid", "utm_social", "utm_social-type", "utm_source_platform", "utm_supplier", "utm_swu", "utm_umguk", "utm_userid", "utm_viz_id", "srsltid", "gbraid", "wbraid", "gad_source", "gclid", "gclsrc", "msclkid", "yclid", "ymclid", "ysclid", "ttclid", "twclid", "wickedid", "usqp", "guccounter", "guce_referrer", "guce_referrer_sig", "ex_cid", "mc_cid", "mc_eid", "mkt_tok", "pk_campaign", "pk_kwd", "piwik_campaign", "piwik_kwd", "pk_cid", "pk_content", "pk_cpn", "pk_keyword", "pk_medium", "pk_source", "matomo_campaign", "matomo_kwd", "mtm_campaign", "mtm_cid", "mtm_content", "mtm_group", "mtm_keyword", "mtm_kwd", "mtm_medium", "mtm_placement", "mtm_source", "_hsenc", "_hsmi", "hsa_cam", "hsa_src", "hsCtaTracking", "hsa_acc", "hsa_ad", "hsa_grp", "hsa_kw", "hsa_la", "hsa_mt", "hsa_net", "hsa_ol", "hsa_tgt", "hsa_ver", "__hsfp", "__hssc", "__hstc", "__s", "source", "campaign", "medium", "term", "referrer", "clickid", "clickref", "affid", "cid", "tid", "rid", "aid", "pid", "subid", "subid1", "subid2", "subid3", "subid4", "subid5", "affiliate_id", "partner_id", "transaction_id", "irclickid", "irgwc", "ir_adid", "ir_campaignid", "ir_partnerid", "yadclid", "yadordid", "sms_click", "sms_source", "sms_uph", "_branch_referrer", "_branch_match_id", "_bhlid", "cm_cr", "cm_me", "cm_re", "cm_sp", "cm_mmc", "cm_mmca1", "cm_mmca2", "cm_mmca3", "cm_mmca4", "cm_mmca5", "cm_mmca6", "cm_mmca7", "cm_mmca8", "cm_mmca9", "cm_mmca10", "cm_mmca11", "cm_mmca12", "cm_mmca13", "cm_mmca14", "cm_mmca15", "ck_subscriber_id", "_ga", "_gl", "dclid", "awc", "admitad_uid", "tduid", "adj_t", "adj_campaign", "adj_creative", "adjust_tracker", "adjust_campaign", "adjust_adgroup", "adjust_creative", "adjust_tracker_limit", "adjust_referrer", "external_click_id", "mt_click_id", "mt_network", "mt_campaign", "mt_adset", "mt_creative", "mt_medium", "mt_sub1", "mt_sub2", "mt_sub3", "mt_sub4", "mt_sub5", "mt_link_id", "mindbox-message-key", "mindbox-click-id", "wickedsource", "wickedplacement", "wickedkeyword", "rb_clickid", "oly_anon_id", "oly_enc_id", "cjevent", "deep_link_sub1", "deep_link_value", "ebisAdID", "_openstat", "adfrom", "nx_source", "_zucks_suid", "cmpid", "oprtrack", "xtor", "vero_conv", "vero_id", "itm_source", "itm_medium", "itm_campaign", "itm_content", "itm_term", "bsft_clkid", "bsft_uid", "bsft_eid", "bsft_mid", "bsft_aaid", "bsft_ek", "dpg_source", "dpg_campaign", "dpg_medium", "dpg_content", "gps_adid", "unicorn_click_id", "adobe_mc_ref", "adobe_mc_sdid", "s_cid", "cx_click", "cx_recsOrder", "cx_recsWidget", "aiad_clid", "_sgm_campaign", "_sgm_source", "_sgm_action", "_sgm_term", "_sgm_pinned", "pk_vid", "erid", "famad_xuid", "rtkcid"
+    ],
+    "meta": [
+      "fbclid", "igshid", "igsh", "ig_rid", "eid", "__cft__", "__tn__", "fb_action_ids", "fb_action_types", "fb_comment_id", "fb_ref", "fb_source", "action_object_map", "action_type_map", "action_ref_map", "mibextid"
+    ],
+    "youtube": [
+      "si", "feature", "ab_channel", "app", "context", "pp", "source_ve_path", "embeds_euri", "embeds_loader_url_for_pings", "embeds_origin"
+    ],
+    "x_twitter": [
+      "s", "t", "ref_src", "ref_url", "cn", "cxt"
+    ],
+    "linkedin": [
+      "trk", "trkInfo", "refId", "trackingId", "trackingCode", "original_referer", "mcid", "src", "rcm"
+    ],
+    "reddit": [
+      "share_id", "ref", "ref_source", "correlation_id", "post_fullname", "ref_campaign"
+    ],
+    "tiktok": [
+      "is_copy_url", "is_from_webapp", "sender_device", "sender_web_id", "share_app_id", "u_code", "mid", "timestamp", "user_id", "region", "embed_source", "refer", "referer_url", "referer_video_id"
+    ],
+    "pinterest": [
+      "invitoken", "source_url", "pintrk"
+    ],
+    "amazon": [
+      "tag", "linkCode", "camp", "creative", "creativeASIN", "ascsubtag", "dib", "dib_tag", "geniuslink", "keywords", "th", "content-id", "linkId", "ufe", "crid", "pd_rd_i", "pd_rd_r", "pd_rd_w", "pd_rd_wg", "pf_rd_i", "pf_rd_m", "pf_rd_p", "pf_rd_r", "pf_rd_s", "pf_rd_t", "qid", "ref", "ref_", "refinements", "rnid", "social_share", "sprefix"
+    ],
+    "google": [
+      "sa", "rct", "opi", "ved", "usg", "ei", "gs_lcp", "sclient", "sca_esv", "rlz", "uact", "gws_rd", "bih", "biw", "client", "dpr", "fbs", "gs_lcrp", "gs_lp", "ictx", "iflsig", "oq", "sei", "sourceid", "spell", "sstk"
+    ],
+    "spotify": [
+      "si", "context"
+    ],
+    "instagram": [
+      "igshid", "igsh", "ig_rid"
+    ],
+    "github": [
+      "notification_referrer_id"
+    ],
+    "ebay": [
+      "media", "mkcid", "mkevt", "ssspo", "ssrc", "ssuid", "widget_ver"
+    ],
+    "goodreads": [
+      "from_search", "from_srp", "qid", "rank", "ref"
+    ],
+    "imdb": [
+      "pf_rd_m", "pf_rd_p", "pf_rd_r", "pf_rd_s", "pf_rd_t", "pf_rd_i", "ref_"
+    ],
+    "nytimes": [
+      "referringSource", "sgrp", "smid", "ugrp"
+    ],
+    "wsj": [
+      "reflink", "st", "mod"
+    ],
+    "eventbrite": [
+      "utm-campaign", "utm-content", "utm-experiment", "utm-medium", "utm-share-source", "utm-source", "utm-term", "aff", "can_id", "email_referrer", "email_subject", "link_id", "ref", "source"
+    ],
+    "bloomberg": [
+      "trk", "in_source", "leadSource", "srnd"
+    ],
+    "aliexpress": [
+      "algo_exp_id", "pdp_npi", "curPageLogUid"
+    ],
+    "conde_nast": [
+      "bxid", "cndid", "esrc", "hasha", "hashb", "hashc", "source", "mbid"
+    ],
+    "cbs": [
+      "ftag", "intcid", "linkId"
+    ],
+    "linkedin_specific": [
+      "trackingCode", "trackingId", "original_referer", "mcid", "src", "rcm"
+    ],
+    "hbr_techcrunch": [
+      "tpcc"
+    ],
+    "radio_canada": [
+      "partageApp"
+    ],
+    "brave_search": [
+      "source"
+    ],
+    "zillow": [
+      "rtoken"
+    ],
+    "feverup": [
+      "CAMEFROM"
+    ],
+    "zoopla": [
+      "search_identifier"
+    ],
+    "bandcamp": [
+      "from"
+    ],
+    "gofundme": [
+      "attribution_id"
+    ],
+    "gamefound": [
+      "ref", "refcode"
+    ],
+    "washingtonpost": [
+      "itid"
+    ],
+    "ticketweb": [
+      "REFERRAL_ID"
+    ],
+    "seek": [
+      "tracking"
+    ],
+    "mailchimp": [
+      "e"
+    ],
+    "songkick": [
+      "deep_link_campaign", "deep_link_medium", "deep_link_source"
+    ],
+    "humblebundle": [
+      "hmb_campaign", "hmb_medium", "hmb_source"
+    ],
+    "narvar": [
+      "destination_country", "dzip", "order_number", "origin_country", "ozip", "service"
+    ],
+    "dice": [
+      "cid1", "cid2", "pid"
+    ],
+    "threads": [
+      "xmt"
+    ],
+    "app_link": [
+      "cjevent", "click_id"
+    ],
+    "email_marketing": [
+      "bbeml", "bsft_clkid", "bsft_uid", "et_rid", "ml_subscriber", "ml_subscriber_hash", "oft_c", "oft_ck", "oft_d", "oft_id", "oft_ids", "oft_k", "oft_lk", "oft_sk", "sms_click", "sms_source", "sms_uph", "ss_email_id", "vero_conv", "vero_id", "et_cid", "et_lid", "ml_sub", "ml_sub_hash", "ss_campaign_id", "ss_campaign_name", "ss_campaign_sent_date", "ss_source"
+    ],
+    "affiliate_networks": [
+      "at_campaign", "at_campaign_type", "at_channel", "at_creation", "at_custom1", "at_custom2", "at_custom3", "at_custom4", "at_detail_placement", "at_emailtype", "at_format", "at_general_placement", "at_identifier", "at_link", "at_link_id", "at_link_origin", "at_link_type", "at_medium", "at_network", "at_platform", "at_ptr_name", "at_recipient_id", "at_recipient_list", "at_send_date", "at_term", "at_type", "at_variant"
+    ],
+    "brave_analytics": [
+      "brave-campaign-id", "brave-creative-id", "brave-creative-set-id"
+    ],
+    "native_ads": [
+      "nb_adid", "nb_aname", "nb_asize", "nb_atype", "nb_cid", "nb_mtype", "nb_partner_name", "nb_partner_shared_id", "nb_pid", "nb_platform", "nb_product_sku"
+    ],
+    "social_campaigns": [
+      "s_campaign", "sc_customer", "sc_eh", "sc_lid", "sc_llid", "sc_src", "sc_uid"
+    ],
+    "cx_personalization": [
+      "cx_click", "cx_recsOrder", "cx_recsWidget"
+    ],
+    "hive": [
+      "h_sid", "h_slt"
+    ]
+  },
+  "patterns": [
+    "utm_.*", "atl_.*", "ref_.*", "aff_.*", "mt_.*", "af_.*", "pk_.*", "mtm_.*", "hsa_.*", "cm_.*", "at_.*", "nb_.*", "sc_.*"
   ],
-  "domains": {
+  "domain_specific": {
     "youtube.com": {
-      "keep": ["v", "t", "list", "index"],
-      "remove": ["feature", "ab_channel", "app", "si", "start_radio", "embeds_referring_euri", "embeds_referring_origin", "embeds_referring_origin_token", "embeds_widget_referring_euri", "embeds_widget_referring_origin", "embeds_widget_referring_origin_token"]
+      "keep": ["v", "list", "t", "start"],
+      "remove": ["si", "ab_channel", "feature", "app", "context", "pp", "source_ve_path", "embeds_euri", "embeds_loader_url_for_pings", "embeds_origin"],
+      "shortener": {
+        "enabled": true,
+        "base_url": "https://youtu.be/",
+        "video_param": "v"
+      }
+    },
+    "youtu.be": {
+      "keep": ["t", "start"],
+      "remove": ["si", "feature", "pp", "source_ve_path"]
     },
     "twitter.com": {
       "keep": [],
-      "remove": ["s", "t", "ref_src", "ref_url"]
+      "remove": ["s", "t", "ref_src", "ref_url", "cn", "cxt"]
+    },
+    "x.com": {
+      "keep": [],
+      "remove": ["s", "t", "ref_src", "ref_url", "cn", "cxt"]
     },
     "instagram.com": {
       "keep": [],
-      "remove": ["igsh", "utm_source", "utm_campaign", "utm_medium"]
+      "remove": ["igshid", "igsh", "ig_rid", "utm_source"]
     },
     "facebook.com": {
       "keep": [],
-      "remove": ["set", "tn", "eid", "source", "ref", "fref", "ref_type", "type", "external_link", "notif_t", "notif_id", "action_object_map", "action_type_map", "action_ref_map"]
+      "remove": ["fbclid", "ref", "__cft__", "__tn__", "fb_action_ids", "fb_action_types", "fb_comment_id", "fb_source", "mibextid"]
     },
     "linkedin.com": {
       "keep": [],
-      "remove": ["trk", "trkInfo", "original_referer", "lipi", "licu", "trkEmail", "miniProfileUrn", "eBP", "recommendedFlavor", "refId"]
+      "remove": ["trk", "trkInfo", "refId", "trackingId", "trackingCode", "original_referer", "mcid", "src", "rcm"]
     },
     "reddit.com": {
       "keep": [],
@@ -236,14 +247,67 @@
     "threads.net": {
       "keep": [],
       "remove": ["xmt"]
-    },
-    "goo.gl": {
-      "keep": [],
-      "remove": ["sa", "rct", "opi", "ved", "usg", "utm_source", "utm_medium", "utm_campaign"]
-    },
-    "open.spotify.com": {
-      "keep": [],
-      "remove": ["si", "context"]
     }
+  },
+  "redirect_handlers": {
+    "google.com/url": {
+      "extract_param": "url",
+      "decode": true
+    },
+    "t.co": {
+      "follow_redirect": true
+    }
+  },
+  "tracker_descriptions": {
+    "general": "Universal tracking parameters used across multiple platforms including UTM tags, Google Ads, affiliate networks, and general analytics systems.",
+    "meta": "Facebook and Instagram tracking parameters for social media analytics, ad campaigns, and cross-platform engagement tracking.",
+    "youtube": "YouTube video platform parameters for analytics, recommendations, embedding context, and viewer engagement tracking.",
+    "x_twitter": "Twitter/X social platform parameters for tweet engagement, referral tracking, and social media analytics.",
+    "linkedin": "LinkedIn professional network parameters for business analytics, recruitment tracking, and professional content engagement.",
+    "reddit": "Reddit community platform parameters for post engagement, referral tracking, and community analytics.",
+    "tiktok": "TikTok short-form video platform parameters for content analytics, sharing tracking, and algorithm optimization.",
+    "pinterest": "Pinterest visual discovery platform parameters for pin analytics, board tracking, and visual content engagement.",
+    "amazon": "Amazon e-commerce platform parameters for affiliate programs, product recommendations, search analytics, and sales tracking.",
+    "google": "Google services parameters including search analytics, advertising tracking, and various Google product integrations.",
+    "spotify": "Spotify music streaming platform parameters for playlist analytics, music recommendations, and listening behavior tracking.",
+    "instagram": "Instagram visual social platform parameters for story analytics, post engagement, and content sharing tracking.",
+    "github": "GitHub developer platform parameters for repository analytics, notification tracking, and developer engagement metrics.",
+    "ebay": "eBay e-commerce platform parameters for auction analytics, seller tracking, and marketplace engagement metrics.",
+    "goodreads": "Goodreads book discovery platform parameters for reading analytics, book recommendations, and literary community tracking.",
+    "imdb": "Internet Movie Database parameters for film analytics, rating tracking, and entertainment content engagement.",
+    "nytimes": "New York Times news platform parameters for article analytics, subscription tracking, and news engagement metrics.",
+    "wsj": "Wall Street Journal financial news parameters for article tracking, subscription analytics, and business content engagement.",
+    "eventbrite": "Eventbrite event management platform parameters for event analytics, ticket tracking, and event marketing campaigns.",
+    "bloomberg": "Bloomberg financial news and data platform parameters for content analytics, subscription tracking, and financial market engagement.",
+    "aliexpress": "AliExpress e-commerce platform parameters for product analytics, seller tracking, and international marketplace metrics.",
+    "conde_nast": "Conde Nast media publications parameters including Vogue, Wired, GQ, and other magazine brand tracking systems.",
+    "cbs": "CBS media network parameters for content analytics, advertising tracking, and entertainment platform engagement.",
+    "linkedin_specific": "Enhanced LinkedIn tracking parameters for advanced professional analytics, recruitment metrics, and business networking insights.",
+    "hbr_techcrunch": "Harvard Business Review and TechCrunch publication parameters for business content analytics and technology news tracking.",
+    "radio_canada": "Radio-Canada media platform parameters for Canadian content analytics and public broadcasting engagement tracking.",
+    "brave_search": "Brave Search engine parameters for privacy-focused search analytics and alternative search platform tracking.",
+    "zillow": "Zillow real estate platform parameters for property analytics, real estate tracking, and housing market engagement metrics.",
+    "feverup": "Fever event discovery platform parameters for event analytics, cultural activity tracking, and entertainment engagement.",
+    "zoopla": "Zoopla UK property platform parameters for real estate analytics, property search tracking, and housing market insights.",
+    "bandcamp": "Bandcamp independent music platform parameters for artist analytics, music discovery tracking, and independent music engagement.",
+    "gofundme": "GoFundMe crowdfunding platform parameters for campaign analytics, donation tracking, and fundraising engagement metrics.",
+    "gamefound": "Gamefound tabletop gaming platform parameters for crowdfunding analytics, gaming community tracking, and board game engagement.",
+    "washingtonpost": "Washington Post news platform parameters for article analytics, subscription tracking, and political news engagement.",
+    "ticketweb": "Ticketweb event ticketing platform parameters for event analytics, ticket sales tracking, and entertainment venue engagement.",
+    "seek": "Seek job platform parameters for employment analytics, job search tracking, and career development engagement metrics.",
+    "mailchimp": "Mailchimp email marketing platform parameters for campaign analytics, subscriber tracking, and email engagement metrics.",
+    "songkick": "Songkick live music platform parameters for concert analytics, artist tracking, and live music event engagement.",
+    "humblebundle": "Humble Bundle digital content platform parameters for bundle analytics, gaming content tracking, and digital media engagement.",
+    "narvar": "Narvar shipping and logistics platform parameters for package tracking, delivery analytics, and e-commerce fulfillment metrics.",
+    "dice": "Dice event platform parameters for nightlife analytics, event tracking, and entertainment venue engagement metrics.",
+    "threads": "Meta Threads social platform parameters for text-based social analytics and Twitter-alternative engagement tracking.",
+    "app_link": "Branch.io and app linking platform parameters for mobile app analytics, deep linking tracking, and app engagement metrics.",
+    "email_marketing": "Comprehensive email marketing platform parameters including campaign tracking, subscriber analytics, and email engagement across multiple providers.",
+    "affiliate_networks": "AT Internet and affiliate network parameters for commission tracking, partner analytics, and affiliate marketing performance metrics.",
+    "brave_analytics": "Brave Browser internal analytics parameters for privacy-focused browser tracking and advertising measurement systems.",
+    "native_ads": "Native advertising network parameters including Outbrain and similar platforms for content recommendation and advertising analytics.",
+    "social_campaigns": "Social media campaign tracking parameters for cross-platform social analytics and social media marketing performance.",
+    "cx_personalization": "Customer experience and personalization platform parameters for user behavior tracking and personalized content delivery.",
+    "hive": "Hive collaboration platform parameters for team analytics, project tracking, and workplace productivity engagement metrics."
   }
 }
