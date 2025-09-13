@@ -6,15 +6,17 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,8 +25,8 @@ class MainActivity : AppCompatActivity() {
     // UI Components
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var etUrlInput: EditText
-    private lateinit var btnSanitize: Button
-    private lateinit var btnInfo: ImageButton
+    private lateinit var btnSanitize: MaterialButton
+    private lateinit var btnInfo: MaterialButton
 
     // Sections
     private lateinit var trackersSection: LinearLayout
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         urlProcessor = URLProcessor(this)
         initializeViews()
         setupListeners()
+        updateClearButtonVisibility()
         setupSwipeRefresh()
 
         // Handle different intent types
@@ -74,8 +77,8 @@ class MainActivity : AppCompatActivity() {
         // Main components
         swipeRefresh = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh)
         etUrlInput = findViewById<EditText>(R.id.et_url_input)
-        btnSanitize = findViewById<Button>(R.id.btn_sanitize)
-        btnInfo = findViewById<ImageButton>(R.id.btn_info)
+        btnSanitize = findViewById<MaterialButton>(R.id.btn_sanitize)
+        btnInfo = findViewById<MaterialButton>(R.id.btn_info)
 
         // Sections
         trackersSection = findViewById<LinearLayout>(R.id.trackers_section)
@@ -121,6 +124,56 @@ class MainActivity : AppCompatActivity() {
         etUrlInput.setOnEditorActionListener { _, _, _ ->
             onSanitizePressed()
             true
+        }
+
+        // Clear button functionality
+        etUrlInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                val drawables = etUrlInput.compoundDrawables
+                if (s.isNullOrEmpty()) {
+                    // Hide clear button
+                    etUrlInput.setCompoundDrawablesWithIntrinsicBounds(
+                        drawables[0], drawables[1], null, drawables[3]
+                    )
+                } else {
+                    // Show clear button
+                    etUrlInput.setCompoundDrawablesWithIntrinsicBounds(
+                        drawables[0], drawables[1], ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_close), drawables[3]
+                    )
+                }
+            }
+        })
+
+        etUrlInput.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                val drawableEnd = etUrlInput.compoundDrawables[2]
+                if (drawableEnd != null && event.rawX >= (etUrlInput.right - drawableEnd.bounds.width() - etUrlInput.paddingEnd)) {
+                    // Clear button clicked
+                    etUrlInput.text.clear()
+                    true
+                } else {
+                    false
+                }
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun updateClearButtonVisibility() {
+        val drawables = etUrlInput.compoundDrawables
+        if (etUrlInput.text.isNullOrEmpty()) {
+            // Hide clear button
+            etUrlInput.setCompoundDrawablesWithIntrinsicBounds(
+                drawables[0], drawables[1], null, drawables[3]
+            )
+        } else {
+            // Show clear button
+            etUrlInput.setCompoundDrawablesWithIntrinsicBounds(
+                drawables[0], drawables[1], ContextCompat.getDrawable(this, R.drawable.ic_close), drawables[3]
+            )
         }
     }
 
@@ -191,6 +244,7 @@ class MainActivity : AppCompatActivity() {
             // Auto-paste from clipboard
             text = getClipboardText()
             etUrlInput.setText(text)
+            updateClearButtonVisibility()
         }
 
         if (text.isNotEmpty()) {
@@ -239,7 +293,7 @@ class MainActivity : AppCompatActivity() {
         updateUI()
 
         btnSanitize.isEnabled = true
-        btnSanitize.text = "Sanitize URLs"
+        btnSanitize.text = "🪄 Sanitize"
 
         // Show summary toast
         val totalRemoved = results.sumOf { it.removedParams }

@@ -60,16 +60,19 @@
             </LinearLayout>
 
             <!-- Info button -->
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_info"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/rounded_info_background"
-                android:src="@drawable/ic_info_outline"
-                app:tint="@color/colorOnSurfaceVariant"
-                android:contentDescription="About" />
+                app:icon="@drawable/ic_info_outline"
+                app:iconTint="@color/colorOnSurfaceVariant"
+                app:backgroundTint="@color/colorSurfaceVariant"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                app:elevation="2dp"
+                android:contentDescription="About"
+                style="@style/Widget.Material3.Button.IconButton" />
         </RelativeLayout>
 
         <!-- Subtitle -->
@@ -134,21 +137,24 @@
                         android:imeOptions="actionDone"
                         android:padding="12dp"
                         android:layout_marginBottom="8dp"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:drawableEnd="@drawable/ic_close"
+                        android:drawablePadding="8dp" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_sanitize"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@drawable/rounded_button_primary"
-                        android:text="Sanitize URLs"
+                        android:layout_height="56dp"
+                        app:backgroundTint="@color/colorPrimary"
+                        android:text="🪄 Sanitize"
                         android:textColor="@color/colorOnPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_auto_fix"
-                        android:drawableTint="@color/colorOnPrimary"
-                        android:drawablePadding="8dp"
-                        android:padding="12dp" />
+                        android:padding="12dp"
+                        android:gravity="center"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+                        app:elevation="2dp"
+                        style="@style/Widget.Material3.Button" />
                 </LinearLayout>
 
                 <!-- Removed Trackers Section (Initially Hidden) -->
@@ -346,7 +352,7 @@
                                 android:layout_height="48dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/rounded_blue_button"
-                                android:text="Copy All"
+                                android:text="Copy List"
                                 android:textColor="@color/colorButtonText"
                                 android:textSize="16sp"
                                 android:textStyle="bold"
@@ -360,7 +366,7 @@
                                 android:layout_height="48dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/rounded_purple_button"
-                                android:text="Share All"
+                                android:text="Share List"
                                 android:textColor="@color/colorButtonText"
                                 android:textSize="16sp"
                                 android:textStyle="bold"

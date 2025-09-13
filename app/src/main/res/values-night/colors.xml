@@ -13,9 +13,9 @@
 
     <!-- Surface Colors - Dark Mode -->
     <color name="colorSurface">#1C1B1F</color>          <!-- Dark surface -->
-    <color name="colorOnSurface">#E6E1E5</color>        <!-- Light text on surface -->
+    <color name="colorOnSurface">#FFFFFF</color>        <!-- Pure white text on surface -->
     <color name="colorSurfaceVariant">#49454F</color>   <!-- Dark surface variant -->
-    <color name="colorOnSurfaceVariant">#CAC4D0</color> <!-- Light text on surface variant -->
+    <color name="colorOnSurfaceVariant">#FFFFFF</color> <!-- Pure white text on surface variant -->
 
     <!-- Accent Colors -->
     <color name="colorTertiary">#EFB8C8</color>         <!-- Lighter tertiary -->
