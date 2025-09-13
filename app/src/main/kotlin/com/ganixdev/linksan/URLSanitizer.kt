@@ -86,7 +86,7 @@ class URLSanitizer(private val context: Context) {
                 }
             }
 
-            domainRules[domain] = DomainRules(keep, remove)
+            domainRules[domain.lowercase()] = DomainRules(keep, remove)
         }
     }
 
@@ -179,7 +179,7 @@ class URLSanitizer(private val context: Context) {
             }
 
             // Apply general tracking parameter removal
-            removeTrackingParams(uri)
+            return removeTrackingParams(uri)
 
         } catch (e: Exception) {
             null
@@ -191,10 +191,11 @@ class URLSanitizer(private val context: Context) {
 
         val handlers = rules.getJSONObject("redirect_handlers")
         val handlerKeys = handlers.keys()
+        val hostLower = host.lowercase()
 
         while (handlerKeys.hasNext()) {
             val handlerDomain = handlerKeys.next()
-            if (host.contains(handlerDomain)) {
+            if (hostLower.contains(handlerDomain.lowercase())) {
                 val handlerObj = handlers.getJSONObject(handlerDomain)
                 val extractParam = if (handlerObj.has("extract_param")) handlerObj.getString("extract_param") else null
                 val decode = handlerObj.optBoolean("decode", false)
@@ -230,13 +231,15 @@ class URLSanitizer(private val context: Context) {
     }
 
     private fun getDomainRules(host: String): DomainRules? {
+        val hostLower = host.lowercase()
+
         // Check for exact domain match first
-        domainRules[host]?.let { return it }
+        domainRules[hostLower]?.let { return it }
 
         // Check for subdomain matches
         val domainKeys = domainRules.keys
         for (domain in domainKeys) {
-            if (host.contains(domain)) {
+            if (hostLower.contains(domain.lowercase())) {
                 return domainRules[domain]
             }
         }
@@ -255,10 +258,21 @@ class URLSanitizer(private val context: Context) {
             }
         }
 
-        // Remove specified parameters
+        // Process all parameters according to domain rules
         val queryParams = uri.queryParameterNames
         for (param in queryParams) {
-            if (!rules.keep.contains(param) && !rules.remove.contains(param)) {
+            val paramLower = param.lowercase()
+            val shouldKeep = when {
+                // Explicitly keep these parameters
+                rules.keep.any { it.equals(paramLower, ignoreCase = true) } -> true
+                // Explicitly remove these parameters
+                rules.remove.any { it.equals(paramLower, ignoreCase = true) } -> false
+                // For parameters not in either list, apply general tracking logic
+                else -> !trackingParams.any { it.equals(paramLower, ignoreCase = true) } &&
+                        !patterns.any { paramLower.matches(Regex(it)) }
+            }
+
+            if (shouldKeep) {
                 val value = uri.getQueryParameter(param)
                 if (value != null) {
                     builder.appendQueryParameter(param, value)
@@ -277,15 +291,16 @@ class URLSanitizer(private val context: Context) {
         for (param in queryParams) {
             var shouldKeep = true
 
-            // Check if parameter matches any tracking parameter
-            if (trackingParams.contains(param)) {
+            // Check if parameter matches any tracking parameter (case-insensitive)
+            val paramLower = param.lowercase()
+            if (trackingParams.any { it.equals(paramLower, ignoreCase = true) }) {
                 shouldKeep = false
             }
 
             // Check if parameter matches any pattern
             if (shouldKeep) {
                 for (pattern in patterns) {
-                    if (param.matches(Regex(pattern))) {
+                    if (paramLower.matches(Regex(pattern))) {
                         shouldKeep = false
                         break
                     }
