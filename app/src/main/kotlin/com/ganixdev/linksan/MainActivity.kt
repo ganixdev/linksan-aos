@@ -225,6 +225,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun processSharedText(text: String) {
+        // Check for multiple URLs first
+        val extractedUrls = urlProcessor.extractUrls(text)
+
+        if (extractedUrls.size > 1) {
+            // Show toast for multiple URLs
+            Toast.makeText(
+                this,
+                "Please select one URL to sanitize and open",
+                Toast.LENGTH_LONG
+            ).show()
+            finish()
+            return
+        }
+
         val result = urlProcessor.processTextForUrls(text)
 
         if (result.success && result.sanitizedUrl != null) {

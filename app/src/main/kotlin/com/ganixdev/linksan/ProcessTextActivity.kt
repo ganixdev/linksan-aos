@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 
 class ProcessTextActivity : Activity() {
 
@@ -45,6 +46,21 @@ class ProcessTextActivity : Activity() {
     private fun processText(text: String) {
         Log.d(TAG, "Processing text: '$text'")
         try {
+            // First check if there are multiple URLs
+            val extractedUrls = urlProcessor.extractUrls(text)
+
+            if (extractedUrls.size > 1) {
+                // Show toast for multiple URLs
+                Toast.makeText(
+                    this,
+                    "Please select one URL to sanitize and open",
+                    Toast.LENGTH_LONG
+                ).show()
+                Log.d(TAG, "Multiple URLs detected (${extractedUrls.size}), showing toast")
+                finish()
+                return
+            }
+
             val result = urlProcessor.processTextForUrls(text)
             Log.d(TAG, "Processing result: success=${result.success}, url=${result.sanitizedUrl}")
 
