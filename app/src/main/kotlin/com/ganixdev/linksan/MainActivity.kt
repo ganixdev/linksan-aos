@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     private var hasProcessedUrl = false
 
     // Support URL
-    private val coffeeUrl = "https://www.buymeacoffee.com/ganixdev"
+    private val coffeeUrl = "https://ko-fi.com/ganixdev"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -441,10 +441,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openSupportUrl(view: View) {
-        urlProcessor.openUrl("https://github.com/ganixdev/LinkSan")
+        urlProcessor.openUrl("https://ko-fi.com/ganixdev")
     }
 
     fun openIssuesUrl(view: View) {
-        urlProcessor.openUrl("https://github.com/ganixdev/LinkSan/issues")
+        urlProcessor.openUrl("https://github.com/ganixdev/linksan-aos/issues")
     }
 }

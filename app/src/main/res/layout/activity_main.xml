@@ -380,39 +380,32 @@
                 <!-- Support Section (Initially Hidden) -->
                 <LinearLayout
                     android:id="@+id/support_section"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?android:colorBackground"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rounded_primary_background"
                     android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:elevation="1dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:elevation="3dp"
                     android:visibility="gone"
-                    android:gravity="center">
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_gift"
-                        app:tint="?android:colorPrimary"
+                        app:tint="@color/colorOnPrimary"
                         android:layout_marginEnd="8dp" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Support LinkSan"
-                        android:textSize="16sp"
+                        android:text="Send good vibes"
+                        android:textSize="14sp"
                         android:textStyle="bold"
-                        android:textColor="?android:colorPrimary" />
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_arrow_outward"
-                        app:tint="?android:colorPrimary"
-                        android:alpha="0.7" />
+                        android:textColor="@color/colorOnPrimary" />
                 </LinearLayout>
 
                 <!-- Bottom spacing -->
