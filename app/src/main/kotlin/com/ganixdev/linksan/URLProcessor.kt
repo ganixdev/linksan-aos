@@ -5,10 +5,32 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class URLProcessor(private val context: Context) {
 
-    private val urlSanitizer = URLSanitizer(context)
+    companion object {
+        // Constants for better performance
+        private const val CHROME_PACKAGE = "com.android.chrome"
+        private const val ERROR_PREFIX = "Error: "
+        private const val COULD_NOT_SANITIZE = "Could not sanitize URL"
+        private const val NO_URLS_FOUND = "No URLs found in text"
+        private const val COULD_NOT_PROCESS = "Could not process URL"
+        private const val FAILED_TO_OPEN = "Failed to open URL: "
+        private const val FAILED_TO_REOPEN_SHARE = "Failed to reopen share sheet: "
+        private const val SHARE_CHOOSER_TITLE = "Share sanitized URL"
+        
+        // Toast messages
+        private const val REMOVED_PARAMS_EMOJI = "🧹"
+        private const val CLEAN_URL_EMOJI = "✅"
+        private const val WARNING_EMOJI = "⚠️"
+        private const val ERROR_EMOJI = "❌"
+        private const val REMOVED_PARAMS_TEXT = "Removed %d tracking parameters"
+        private const val CLEAN_URL_TEXT = "URL is already clean"
+    }
+
+    private val urlSanitizer by lazy { URLSanitizer(context) }
 
     data class ProcessingResult(
         val success: Boolean,
@@ -39,19 +61,19 @@ class URLProcessor(private val context: Context) {
                     ProcessingResult(
                         success = false,
                         originalUrl = originalUrl,
-                        error = "Could not sanitize URL"
+                        error = COULD_NOT_SANITIZE
                     )
                 }
             } else {
                 ProcessingResult(
                     success = false,
-                    error = "No URLs found in text"
+                    error = NO_URLS_FOUND
                 )
             }
         } catch (e: Exception) {
             ProcessingResult(
                 success = false,
-                error = "Error processing text: ${e.message}"
+                error = ERROR_PREFIX + "processing text: ${e.message}"
             )
         }
     }

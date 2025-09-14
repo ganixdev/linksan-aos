@@ -14,11 +14,25 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        // Constants for better performance and maintainability
+        private const val COFFEE_URL = "https://ko-fi.com/ganixdev"
+        private const val SANITIZE_BUTTON_TEXT = "🪄 Sanitize"
+        private const val PROCESSING_TEXT = "Processing..."
+        private const val CLIPBOARD_LABEL = "LinkSan URLs"
+        private const val SHARE_CHOOSER_TITLE = "Share URL"
+        private const val CHROME_PACKAGE = "com.android.chrome"
+    }
 
     private lateinit var urlProcessor: URLProcessor
 
@@ -56,8 +70,7 @@ class MainActivity : AppCompatActivity() {
     private var currentRemovedTrackers: List<String> = emptyList()
     private var hasProcessedUrl = false
 
-    // Support URL
-    private val coffeeUrl = "https://ko-fi.com/ganixdev"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

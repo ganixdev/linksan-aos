@@ -3,12 +3,25 @@ package com.ganixdev.linksan
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProcessTextActivity : Activity() {
 
-    private val TAG = "ProcessTextActivity"
+    companion object {
+        private const val TAG = "ProcessTextActivity"
+        private const val TEXT_PREFIX = "text/"
+        private const val MULTIPLE_URL_MESSAGE = "Please select one URL to sanitize and open"
+        private const val NO_TEXT_ERROR = "No text selected"
+        private const val INVALID_ACTION_ERROR = "Invalid action or type"
+    }
+
     private lateinit var urlProcessor: URLProcessor
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +38,7 @@ class ProcessTextActivity : Activity() {
         val type = intent.type
 
         // Handle both readonly and read-write ProcessText
-        if (Intent.ACTION_PROCESS_TEXT == action && type?.startsWith("text/") == true) {
+        if (Intent.ACTION_PROCESS_TEXT == action && type?.startsWith(TEXT_PREFIX) == true) {
             val text = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString()
             Log.d(TAG, "ProcessText intent received with text: '$text'")
 
@@ -33,13 +46,11 @@ class ProcessTextActivity : Activity() {
                 processText(text)
             } else {
                 Log.w(TAG, "No text selected or text is blank")
-                urlProcessor.showResultToast(URLProcessor.ProcessingResult(success = false, error = "No text selected"))
-                finish()
+                showErrorAndFinish(NO_TEXT_ERROR)
             }
         } else {
             Log.w(TAG, "Invalid action ($action) or type ($type)")
-            urlProcessor.showResultToast(URLProcessor.ProcessingResult(success = false, error = "Invalid action or type"))
-            finish()
+            showErrorAndFinish(INVALID_ACTION_ERROR)
         }
     }
 
@@ -51,11 +62,7 @@ class ProcessTextActivity : Activity() {
 
             if (extractedUrls.size > 1) {
                 // Show toast for multiple URLs
-                Toast.makeText(
-                    this,
-                    "Please select one URL to sanitize and open",
-                    Toast.LENGTH_LONG
-                ).show()
+                showToastOnMainThread(MULTIPLE_URL_MESSAGE)
                 Log.d(TAG, "Multiple URLs detected (${extractedUrls.size}), showing toast")
                 finish()
                 return
@@ -83,5 +90,14 @@ class ProcessTextActivity : Activity() {
         }
     }
 
+    private fun showErrorAndFinish(error: String) {
+        urlProcessor.showResultToast(URLProcessor.ProcessingResult(success = false, error = error))
+        finish()
+    }
 
+    private fun showToastOnMainThread(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        }
+    }
 }

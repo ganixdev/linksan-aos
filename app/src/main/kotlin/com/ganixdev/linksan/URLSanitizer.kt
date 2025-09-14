@@ -2,6 +2,8 @@ package com.ganixdev.linksan
 
 import android.content.Context
 import android.net.Uri
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
@@ -9,8 +11,22 @@ import java.nio.charset.StandardCharsets
 
 class URLSanitizer(private val context: Context) {
 
+    companion object {
+        // URL regex patterns - compiled once for performance
+        private val PROTOCOL_URL_REGEX = Regex("https?://[^\\s]+")
+        private val DOMAIN_URL_REGEX = Regex("(?:^|\\s)((?:www\\.)?[a-zA-Z0-9][a-zA-Z0-9.-]*\\.[a-zA-Z]{2,}(?:/[^\\s]*)?)(?=\\s|$)")
+        private val DOMAIN_VALIDATION_REGEX = Regex(".*\\.[a-zA-Z]{2,}.*")
+        
+        // Common hosts for quick lookup
+        private const val GOOGLE_HOST = "google.com"
+        private const val GOO_GL_HOST = "goo.gl"
+        private const val YOUTU_BE_HOST = "youtu.be"
+        private const val YOUTUBE_HOST = "www.youtube.com"
+        private const val YOUTUBE_WATCH_PATH = "/watch?v="
+    }
+
     private lateinit var rules: JSONObject
-    private val trackingParams = mutableListOf<String>()
+    private val trackingParams = mutableSetOf<String>() // Use Set for O(1) lookup
     private val patterns = mutableListOf<String>()
     private val domainRules = mutableMapOf<String, DomainRules>()
 
@@ -100,18 +116,15 @@ class URLSanitizer(private val context: Context) {
     }
 
     fun extractUrls(text: String): List<String> {
-        val urls = mutableListOf<String>()
+        val urls = mutableSetOf<String>() // Use Set to avoid duplicates
         
         // Match URLs with protocol (http:// or https://)
-        val protocolUrlRegex = Regex("https?://[^\\s]+")
-        val protocolUrls = protocolUrlRegex.findAll(text).map { it.value }
-        urls.addAll(protocolUrls)
+        PROTOCOL_URL_REGEX.findAll(text).forEach { match ->
+            urls.add(match.value)
+        }
         
         // Match URLs without protocol - improved regex
-        val domainUrlRegex = Regex("(?:^|\\s)((?:www\\.)?[a-zA-Z0-9][a-zA-Z0-9.-]*\\.[a-zA-Z]{2,}(?:/[^\\s]*)?)(?=\\s|$)")
-        val domainMatches = domainUrlRegex.findAll(text)
-        
-        for (match in domainMatches) {
+        DOMAIN_URL_REGEX.findAll(text).forEach { match ->
             val url = match.groupValues[1] // Get the captured group, not the whole match
             // Add https:// prefix if not already present
             val processedUrl = if (!url.startsWith("http://") && !url.startsWith("https://")) {
@@ -125,7 +138,7 @@ class URLSanitizer(private val context: Context) {
         // If no URLs found with regex, try simple fallback for single domain
         if (urls.isEmpty()) {
             val trimmed = text.trim()
-            if (trimmed.contains(".") && !trimmed.contains(" ") && trimmed.matches(Regex(".*\\.[a-zA-Z]{2,}.*"))) {
+            if (trimmed.contains(".") && !trimmed.contains(" ") && trimmed.matches(DOMAIN_VALIDATION_REGEX)) {
                 val processedUrl = if (!trimmed.startsWith("http://") && !trimmed.startsWith("https://")) {
                     "https://$trimmed"
                 } else {
@@ -135,8 +148,7 @@ class URLSanitizer(private val context: Context) {
             }
         }
         
-        // Remove duplicates and return
-        return urls.distinct()
+        return urls.toList()
     }
 
     private fun sanitizeUrlInternal(url: String): String? {
@@ -151,7 +163,7 @@ class URLSanitizer(private val context: Context) {
             }
 
             // Handle Google redirects
-            if (host.contains("google.com") && uri.getQueryParameter("url") != null) {
+            if (host.contains(GOOGLE_HOST) && uri.getQueryParameter("url") != null) {
                 val redirectUrl = uri.getQueryParameter("url")
                 if (redirectUrl != null) {
                     return sanitizeUrlInternal(redirectUrl)
@@ -159,16 +171,16 @@ class URLSanitizer(private val context: Context) {
             }
 
             // Handle goo.gl redirects
-            if (host == "goo.gl" && uri.lastPathSegment != null) {
+            if (host == GOO_GL_HOST && uri.lastPathSegment != null) {
                 // goo.gl URLs are shortened, return as-is since we can't expand them
                 return url
             }
 
             // Handle YouTube shorteners
-            if (host == "youtu.be") {
+            if (host == YOUTU_BE_HOST) {
                 val videoId = uri.lastPathSegment
                 if (videoId != null) {
-                    return "https://www.youtube.com/watch?v=$videoId"
+                    return YOUTUBE_HOST + YOUTUBE_WATCH_PATH + videoId
                 }
             }
 
