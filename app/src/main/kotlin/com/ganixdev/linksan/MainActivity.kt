@@ -424,7 +424,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun copyAllUrls() {
         val allUrls = currentResults.mapNotNull { it.sanitizedUrl }.joinToString("\n")
-        copyToClipboard(allUrls)
+        copyToClipboardInternal(allUrls)
         Toast.makeText(this, "All ${currentResults.size} URLs copied!", Toast.LENGTH_SHORT).show()
     }
 
@@ -434,10 +434,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun copyToClipboard(text: String) {
+        copyToClipboardInternal(text)
+        Toast.makeText(this, "Copied to clipboard", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun copyToClipboardInternal(text: String) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("LinkSan URLs", text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(this, "Copied to clipboard", Toast.LENGTH_SHORT).show()
     }
 
     private fun shareUrl(url: String) {
@@ -446,6 +450,7 @@ class MainActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_TEXT, url)
         }
         startActivity(Intent.createChooser(shareIntent, "Share URL"))
+        Toast.makeText(this, "Opening share options...", Toast.LENGTH_SHORT).show()
     }
 
     private fun openUrl(url: String) {
@@ -456,11 +461,13 @@ class MainActivity : AppCompatActivity() {
             intent.setPackage("com.android.chrome")
             try {
                 startActivity(intent)
+                Toast.makeText(this, "Opening URL...", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 // Fallback to system default
                 val fallbackIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 fallbackIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(fallbackIntent)
+                Toast.makeText(this, "Opening URL...", Toast.LENGTH_SHORT).show()
             }
         } catch (e: Exception) {
             Toast.makeText(this, "Could not open URL: ${e.message}", Toast.LENGTH_SHORT).show()
