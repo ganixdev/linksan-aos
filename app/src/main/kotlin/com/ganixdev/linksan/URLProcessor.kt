@@ -1,5 +1,6 @@
 package com.ganixdev.linksan
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -112,12 +113,18 @@ class URLProcessor(private val context: Context) {
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
             shareIntent.putExtra(Intent.EXTRA_TEXT, sanitizedUrl)
-            shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             // Create chooser to show all available apps
             val chooserIntent = Intent.createChooser(shareIntent, "Share sanitized URL")
-            chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(chooserIntent)
+
+            // Start activity safely
+            if (context is Activity) {
+                context.startActivity(chooserIntent)
+            } else {
+                // If context is not an Activity, add NEW_TASK flag
+                chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(chooserIntent)
+            }
         } catch (e: Exception) {
             showToast("Failed to reopen share sheet: ${e.message}")
             // Fallback: open URL directly
