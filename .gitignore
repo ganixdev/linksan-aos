@@ -5,6 +5,12 @@ build/
 # Local configuration file (sdk path, etc)
 local.properties
 
+# Signing configuration - NEVER commit!
+*.keystore
+*.jks
+signing.properties
+keystore.properties
+
 # Log/OS Files
 *.log
 
