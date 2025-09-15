@@ -1,21 +1,52 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.kts.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# LinkSan ProGuard rules for release optimization
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Keep main application classes
+-keep class com.ganixdev.linksan.MainActivity { *; }
+-keep class com.ganixdev.linksan.ProcessTextActivity { *; }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Keep data classes used for JSON parsing
+-keep class com.ganixdev.linksan.URLProcessor$ProcessingResult { *; }
+-keep class com.ganixdev.linksan.URLSanitizer$DomainRules { *; }
+-keep class com.ganixdev.linksan.URLSanitizer$RedirectHandler { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Keep classes that use reflection or are called from XML/manifests
+-keepclassmembers class * extends android.app.Activity {
+    public void onCreate(android.os.Bundle);
+}
+
+# Keep JSON-related functionality
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class org.json.** { *; }
+
+# Keep Kotlin coroutines
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
+
+# General Android optimizations
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+
+# Optimization settings
+-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+-optimizationpasses 5
+-allowaccessmodification
+-dontpreverify
+
+# Remove debug logs in release
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+    public static int i(...);
+    public static int w(...);
+    public static int d(...);
+    public static int e(...);
+}
+
+# Keep line numbers for crash reports
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile

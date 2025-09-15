@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LinkSan</string>
+    
+    <!-- App Information -->
+    <string name="app_description">Super lightweight URL sanitizer that removes tracking parameters</string>
+    <string name="version_name">1.0.3</string>
+    
+    <!-- Privacy Policy -->
+    <string name="privacy_policy_url">https://ganixdev.github.io/linksan/privacy</string>
+    
+    <!-- Support URLs -->
+    <string name="support_url">https://ganixdev.github.io/linksan/contact</string>
+    <string name="marketing_url">https://ganixdev.github.io/linksan</string>
+    
+    <!-- Contact Information -->
+    <string name="developer_email">ghani.utf8@gmail.com</string>
+    <string name="copyright">Copyright 2025 ganixdev</string>
+    
+    <!-- Accessibility descriptions -->
+    <string name="sanitize_button_description">Sanitize URLs to remove tracking parameters</string>
+    <string name="info_button_description">Show app information and help</string>
+    <string name="clear_input_description">Clear input field</string>
+    <string name="copy_url_description">Copy sanitized URL to clipboard</string>
+    <string name="share_url_description">Share sanitized URL</string>
+    <string name="open_url_description">Open sanitized URL in browser</string>
+    
+    <!-- User Messages -->
+    <string name="no_data_collection_notice">LinkSan does not collect, store, or transmit any personal data. All processing happens locally on your device.</string>
 </resources>
