@@ -10,6 +10,7 @@ local.properties
 *.jks
 signing.properties
 keystore.properties
+/gradle.properties
 
 # Log/OS Files
 *.log
