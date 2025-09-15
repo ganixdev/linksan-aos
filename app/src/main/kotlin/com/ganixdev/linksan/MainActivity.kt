@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         btnShareAll.setOnClickListener { shareAllUrls() }
 
         // Support section
-        supportSection.setOnClickListener { openUrl(coffeeUrl) }
+        supportSection.setOnClickListener { openUrl(COFFEE_URL) }
 
         // URL input handling
         etUrlInput.setOnEditorActionListener { _, _, _ ->

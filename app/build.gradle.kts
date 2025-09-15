@@ -49,7 +49,7 @@ android {
     }
 
     // Optimize APK size
-    packagingOptions {
+    packaging {
         resources {
             excludes += listOf(
                 "/META-INF/{AL2.0,LGPL2.1}",
