@@ -27,7 +27,8 @@
                 android:layout_height="16dp"
                 android:src="@drawable/ic_link"
                 app:tint="@color/colorPrimary"
-                android:layout_marginEnd="6dp" />
+                android:layout_marginEnd="6dp"
+                android:contentDescription="Link icon" />
 
             <TextView
                 android:id="@+id/tv_domain"
@@ -80,7 +81,8 @@
             android:textColor="@color/colorButtonText"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginEnd="4dp" />
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/copy_url_description" />
 
         <Button
             android:id="@+id/btn_item_share"
@@ -93,7 +95,8 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp" />
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/share_url_description" />
 
         <Button
             android:id="@+id/btn_item_open"
@@ -105,6 +108,7 @@
             android:textColor="@color/colorButtonText"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:contentDescription="@string/open_url_description" />
     </LinearLayout>
 </LinearLayout>

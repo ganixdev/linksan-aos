@@ -45,7 +45,8 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_link"
-                        app:tint="@color/colorOnPrimary" />
+                        app:tint="@color/colorOnPrimary"
+                        android:contentDescription="@string/app_name" />
                 </LinearLayout>
 
                 <TextView
@@ -71,7 +72,7 @@
                 app:backgroundTint="@color/colorSurfaceVariant"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
                 app:elevation="2dp"
-                android:contentDescription="About"
+                android:contentDescription="@string/info_button_description"
                 style="@style/Widget.Material3.Button.IconButton" />
         </RelativeLayout>
 
@@ -139,7 +140,8 @@
                         android:layout_marginBottom="8dp"
                         android:textSize="14sp"
                         android:drawableEnd="@drawable/ic_close"
-                        android:drawablePadding="8dp" />
+                        android:drawablePadding="8dp"
+                        android:contentDescription="URL input field" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_sanitize"
@@ -148,6 +150,7 @@
                         app:backgroundTint="@color/colorPrimary"
                         android:text="🪄 Sanitize"
                         android:textColor="@color/colorOnPrimary"
+                        android:contentDescription="@string/sanitize_button_description"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:padding="12dp"
