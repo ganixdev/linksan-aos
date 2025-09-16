@@ -14,6 +14,9 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
@@ -74,7 +77,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Enable edge-to-edge with modern approach for Android 15+ compatibility
+        setupEdgeToEdge()
+        
         setContentView(R.layout.activity_main)
+
+        // Handle window insets for edge-to-edge display
+        setupWindowInsets()
 
         urlProcessor = URLProcessor(this)
         initializeViews()
@@ -84,6 +94,42 @@ class MainActivity : AppCompatActivity() {
 
         // Handle different intent types
         handleIntent()
+    }
+
+    private fun setupEdgeToEdge() {
+        // Modern edge-to-edge implementation without deprecated APIs
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+    }
+
+    private fun setupWindowInsets() {
+        // Get the main content view - typically the root view
+        val mainContent = findViewById<View>(android.R.id.content)
+        
+        ViewCompat.setOnApplyWindowInsetsListener(mainContent) { view, windowInsets ->
+            val insets = windowInsets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or 
+                WindowInsetsCompat.Type.displayCutout()
+            )
+            
+            // Apply padding to avoid content being hidden behind system bars and notches
+            // We only apply top padding to avoid interfering with SwipeRefreshLayout
+            view.setPadding(
+                insets.left,
+                insets.top,
+                insets.right,
+                insets.bottom
+            )
+            
+            windowInsets
+        }
+        
+        // Also apply insets to the SwipeRefreshLayout specifically to handle pull-to-refresh properly
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.swipe_refresh)) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Don't apply top padding to SwipeRefreshLayout as it interferes with the pull gesture
+            view.setPadding(insets.left, 0, insets.right, insets.bottom)
+            windowInsets
+        }
     }
 
     private fun initializeViews() {
