@@ -1,0 +1,1 @@
+Clean URLs by removing tracking parameters and redirects

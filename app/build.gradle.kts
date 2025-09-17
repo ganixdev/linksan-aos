@@ -38,8 +38,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Use production signing if configured, fallback to debug for testing
-            signingConfig = if (project.hasProperty("RELEASE_STORE_FILE")) {
+            // F-Droid compatibility: disable signing for F-Droid builds
+            signingConfig = if (project.hasProperty("FDROID_BUILD")) {
+                null // F-Droid will handle signing
+            } else if (project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfigs.getByName("release")
             } else {
                 signingConfigs.getByName("debug") // Fallback for development

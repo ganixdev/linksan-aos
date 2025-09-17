@@ -1,0 +1,28 @@
+LinkSan is a privacy-focused URL sanitizer that helps you clean URLs by removing tracking parameters, affiliate codes, and unnecessary redirects. Protect your privacy and share cleaner links.
+
+<b>Features:</b>
+• Remove tracking parameters (UTM, Facebook, Google Analytics, etc.)
+• Clean affiliate marketing codes
+• Resolve redirects to original URLs
+• Material Design 3 interface
+• Dark mode support
+• Share cleaned URLs directly
+• Copy to clipboard functionality
+• Bulk URL processing
+• No internet permissions required for basic cleaning
+• Completely offline operation for privacy
+
+<b>Privacy First:</b>
+LinkSan is designed with privacy in mind. The app processes URLs locally on your device without sending data to external servers. Only when resolving redirects does the app make network requests.
+
+<b>Open Source:</b>
+LinkSan is completely open source and available on GitHub. You can review the code, contribute, or build it yourself.
+
+<b>Supported Tracking Parameters:</b>
+• UTM parameters (utm_source, utm_medium, utm_campaign, etc.)
+• Facebook tracking (fbclid, gclid)
+• Google Analytics (ga_source, ga_medium)
+• Amazon affiliate codes
+• And many more...
+
+Perfect for privacy-conscious users who want to share clean URLs without tracking.

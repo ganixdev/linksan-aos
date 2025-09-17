@@ -1,0 +1,4 @@
+• Fixed display issues on devices with notches and cutouts (Android 15+ compatibility)
+• Improved edge-to-edge display support
+• Enhanced performance and stability
+• Updated to latest Android APIs
